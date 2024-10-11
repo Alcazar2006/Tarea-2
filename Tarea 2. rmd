@@ -1,0 +1,15 @@
+install.packages('arules')
+library(arules)
+
+data_persona = read.csv('C:\\Users\\daalcazare\\Downloads\\t\\db_csv_\\db_csv_\\PERSONA_BDP.csv', sep=',')
+
+data_persona = subset(data_persona, select = -PEA)
+data_persona = subset(data_persona, select = -POCUPA)
+data_persona = subset(data_persona, select = -PEI)
+
+reglas_persona = apriori(data_persona, parameter = list(support = 0.2, confidence = 0.5) )
+
+
+inspect(reglas_persona[0:100])
+inspect(reglas_persona[100:200])
+inspect(reglas_persona[200:300])
